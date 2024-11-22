@@ -5,9 +5,9 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_USER: usuario
-      POSTGRES_PASSWORD: teste_back
-      POSTGRES_DB: banco
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "5432:5432" # Mapeia a porta 5432 do container para o host
     volumes:
