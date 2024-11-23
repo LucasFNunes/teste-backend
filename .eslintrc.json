@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "curly": ["error", "all"], // Garante que chaves sejam usadas em todos os blocos de controle
+    "prettier/prettier": "error" // Garante que o Prettier seja executado corretamente
+  }
+}

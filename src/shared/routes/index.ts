@@ -1,17 +1,11 @@
 import { Router } from "express";
-
-import routesUser from "../../modules/users/routes/UsersRoutes";
+import routesUser from "../../modules/users/routes/users.routes";
+import routesAuth from "../../modules/authenticate/routes/authenticate.routes";
 
 const routes = Router();
 
 routes.use("/users", routesUser);
 
-// routes.use("/empresas", routesEmpresas);
+routes.use("/authenticate", routesAuth);
 
-// routes.use("/authenticate", routesAuth);
-
-// routes.use("/produtos", routesProdutos);
-
-// routes.use("/servicos", routesServicos);
-
-export default module.exports = routes;
+export default routes;

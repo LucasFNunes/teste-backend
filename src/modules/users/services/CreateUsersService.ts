@@ -1,8 +1,13 @@
-import  AppDataSource  from "../../../ormconfig";
+import AppDataSource from "../../../ormconfig";
 import { User } from "../schemas/schema";
+import { sendAuthEmail } from "../services/MailerService";
 
 export default class CreateUserService {
-  static async createUser(name: string, email: string, password: string): Promise<void> {
+  static async createUser(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<void> {
     const userRepository = AppDataSource.getRepository(User);
 
     // Valida os campos
@@ -19,6 +24,10 @@ export default class CreateUserService {
     // Cria um novo usuário
     const newUser = userRepository.create({ name, email, password });
 
+    const token = "UUID";
+
+    // Enviar e-mail de autenticação
+    sendAuthEmail(email, token);
     // Salva no banco de dados
     await userRepository.save(newUser);
   }
