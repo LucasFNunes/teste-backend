@@ -1,4 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from "typeorm";
 
 @Entity("urlShortener") // Nome da tabela no banco de dados
 export class UrlShortener {
@@ -16,6 +21,12 @@ export class UrlShortener {
 
   @Column({ type: "int", nullable: false, default: 0 })
   clicks!: number;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @CreateDateColumn()
+  updatedAt!: Date;
 
   @Column({ type: "boolean", default: false })
   isTrashed!: boolean;

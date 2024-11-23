@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  BeforeInsert,
+} from "typeorm";
 import bcrypt from "bcrypt";
 
 @Entity("users") // Nome da tabela no banco de dados
@@ -26,6 +32,12 @@ export class User {
 
   @Column({ type: "boolean", default: false })
   isTrashed!: boolean;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @CreateDateColumn()
+  updatedAt!: Date;
 
   @BeforeInsert()
   async hashPassword() {
