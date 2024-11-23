@@ -24,7 +24,7 @@ export default class AuthenticateService {
 
     const token = jwt.sign(
       {
-        idUser: user.id,
+        userid: user.id,
         name: user.name,
       },
       jwtKey,
