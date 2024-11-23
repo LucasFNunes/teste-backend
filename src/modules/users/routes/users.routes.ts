@@ -6,9 +6,9 @@ import UsersController from "../controllers/UsersControllers";
 
 const routesUser = Router();
 
-const requestHandler  = (_req: Request, res: Response) => {}
+const requestHandler = (_req: Request, res: Response) => {};
 
-routesUser.post('/create', UsersController.create as typeof requestHandler);
+routesUser.post("/create", UsersController.create as typeof requestHandler);
 
 // routesUser.get("/findall", ensureAuth, UsersController.findAll);
 
