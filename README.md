@@ -73,7 +73,8 @@ O servidor estará rodando em http://localhost:3000.
     POST /urlshortener/shorten
     Body:
 
-```{
+```
+{
 	  "name":"Lucas",
 	"email": "ferreiranuneslucas13@gmail.com",
 	"password": "abc123"
