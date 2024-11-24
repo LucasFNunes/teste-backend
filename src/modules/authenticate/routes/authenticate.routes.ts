@@ -7,9 +7,9 @@ const routesAuth = Router();
 
 const requestHandler = (_req: Request, res: Response) => {};
 
-routesAuth.get("/", AuthenticateController.auth as typeof requestHandler);
+routesAuth.post("/", AuthenticateController.auth as typeof requestHandler);
 
-routesAuth.get(
+routesAuth.post(
   "/email",
   AuthenticateController.authEmail as typeof requestHandler
 );
