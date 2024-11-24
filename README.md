@@ -25,13 +25,13 @@ cd teste-backend
 Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
 # Configurações do banco de dados e JWT
-
+```
 DB_USER=admin
 DB_PASSWORD=admin1
 DB_DATABASE=urlshortener
 JWT_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiIiLCJuYW1lIjoiIn0.W6aPleOqaCCDKWEVPLjB92elM5NIIXZD5GItScSdqww
 SENDGRID=APIKEY
-
+```
 ⚠️O GIT ME IMPEDE DE SUBIR A API KEY DO SENDGRID NECESSARIA PARA QUE O ENVIO DE EMAIL SEJA REALIZADO, TENTAREI MANDAR EM UM JSON COM O PROJETO EM UM READ.ME MAS A NÃO AUTENTICAÇÃO POR EMAIL NÃO DEVE IMPACTAR NO FLUXO DO PROJETO, APENAS A NÃO AUTENTICAÇÃO POR LOGIN IMPACTA
 
 # Porta em que o servidor rodará
@@ -73,12 +73,15 @@ O servidor estará rodando em http://localhost:3000.
     POST /urlshortener/shorten
     Body:
 
-{
-  "name":"Lucas",
+```{
+	  "name":"Lucas",
 	"email": "ferreiranuneslucas13@gmail.com",
 	"password": "abc123"
 }
 
+```
+
+    
 Resposta:
 
     {
@@ -88,17 +91,17 @@ Resposta:
     
 🛠️  auth/login
 
-    GET /authenticate
+GET /authenticate
     Body:
-
+```
 {
 	"name":"Lucas",
 	"email": "lucas@gmail.com",
 	"password": "abc123"
 }
-
+```
 Resposta:
-
+```
 {
 	"token": "JWT",
 	"user": {
@@ -107,33 +110,33 @@ Resposta:
 		"id": "273efe7b-3fc2-48cb-81b8-f34bf15b3a02"
 	}
 }
-
+```
 ⚠️Caso o usuario desejar realizar qualquer requisição logado, deverá copiar o JWT que será gerado aqui e colocar como Bearer Token na requisição que deseja realizar logado. Este JWT expira depois de 1 hora!!
 
-    GET /authenticate/email
+GET /authenticate/email
     Body:
-
+```
 {
 	"code": "45edefc8-a4c2fca6"
 }
-
+```
 Resposta:
-
+```
 {
 	"message": "Email autenticado com sucesso!"
 }
-
+```
 🛠️ urlshortener
 
 1. Encurtar uma URL
 
     POST /urlshortener/shorten
     Body:
-
+```
 {
   "url": "https://exemplo.com"
 }
-
+```
 Resposta:
 
     {
@@ -150,25 +153,26 @@ Resposta:
 
     PATCH /urlshortener/:id
    Body:
-   
+   ```
     {
 	   "url" : "https://www.google.com/"
     }
+   ```
     Resposta:
-
+```
     {
       "message": "Url atualizada com sucesso!"
     }
-   
+   ```
 5. Deletar um link encurtado
 
     DELETE /urlshortener/:id
     Resposta:
-
+```
     {
       "message": "Registro deletado com sucesso."
     }
-
+```
 🐳 Rodando o projeto com Docker
 
 Se preferir, você pode rodar toda a aplicação (servidor + banco de dados) usando Docker Compose:
@@ -188,9 +192,9 @@ npx jest ou npx jest --coverage
 🧪 Documentação com swagger
 
 Execute a documentação com o servidor ativo pelo link:
-
+```
 http://localhost:3000/api-docs
-
+```
 📝 Incrementação
 
 A Aplicação pode ser incrementada de diversar formas, dentre elas posso citar:
