@@ -30,6 +30,9 @@ DB_USER=admin
 DB_PASSWORD=admin1
 DB_DATABASE=urlshortener
 JWT_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiIiLCJuYW1lIjoiIn0.W6aPleOqaCCDKWEVPLjB92elM5NIIXZD5GItScSdqww
+SENDGRID=APIKEY
+
+⚠️O GIT ME IMPEDE DE SUBIR A API KEY DO SENDGRID NECESSARIA PARA QUE O ENVIO DE EMAIL SEJA REALIZADO, TENTAREI MANDAR EM UM JSON COM O PROJETO EM UM READ.ME MAS A NÃO AUTENTICAÇÃO POR EMAIL NÃO DEVE IMPACTAR NO FLUXO DO PROJETO, APENAS A NÃO AUTENTICAÇÃO POR LOGIN IMPACTA
 
 # Porta em que o servidor rodará
 PORT=3000
@@ -107,6 +110,19 @@ Resposta:
 
 ⚠️Caso o usuario desejar realizar qualquer requisição logado, deverá copiar o JWT que será gerado aqui e colocar como Bearer Token na requisição que deseja realizar logado. Este JWT expira depois de 1 hora!!
 
+    GET /authenticate/email
+    Body:
+
+{
+	"code": "45edefc8-a4c2fca6"
+}
+
+Resposta:
+
+{
+	"message": "Email autenticado com sucesso!"
+}
+
 🛠️ urlshortener
 
 1. Encurtar uma URL
@@ -167,7 +183,23 @@ Se preferir, você pode rodar toda a aplicação (servidor + banco de dados) usa
 
 Execute os testes com o comando:
 
-npm test
+npx jest ou npx jest --coverage
+
+🧪 Documentação com swagger
+
+Execute a documentação com o servidor ativo pelo link:
+
+http://localhost:3000/api-docs
+
+📝 Incrementação
+
+A Aplicação pode ser incrementada de diversar formas, dentre elas posso citar:
+
+- Funcionalidades: Uma forma de editar, listar e até deletar os usuarios cadastrados, uma listagem especifica para os links mais clickados no geral, usuarios com o maior numero de links clickados, usuarios com a maior quantidade de links encurtados cadastrados
+
+- Escalabilidade: Podemos passar toda a função de servidor/banco para gerenciadores mais complexos como AWS e assim trabalhando com serverless, sem precisar de infraestrutura dedicada, e banco mais complexos como Dynamo que escala automaticamente com base na demanda, backups automaticos, latencia reduzida, segurança aprimorada, entre outros.
+
+- Segurança e Conformidade: Varias formas de segurança extra podem ser implemetadas como proteção contra bots e uso indevido, como CAPTCHAs e limites de requisições por IP. Além de formas de criptografia poderiam ser implementadas para garantir que os dados sensíveis estejam criptografados em trânsito (HTTPS).
 
 📝 Contribuição
 
