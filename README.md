@@ -2,7 +2,7 @@
 
 Este projeto é uma API para encurtar URLs, acompanhar cliques e gerenciar URLs de forma eficiente. Ele utiliza Node.js, TypeScript, TypeORM, e um banco de dados PostgreSQL rodando em um contêiner Docker.
 
-🚀 Como rodar o projeto localmente
+# 🚀 Como rodar o projeto localmente
 
 Siga estas instruções para configurar e executar o projeto no seu ambiente local.
 Pré-requisitos:
@@ -24,7 +24,7 @@ cd teste-backend
 
 Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
-# Configurações do banco de dados e JWT no .env
+Configurações do banco de dados e JWT no .env
 ```
 DB_USER=admin
 DB_PASSWORD=admin1
@@ -34,7 +34,7 @@ SENDGRID=APIKEY
 ```
 ⚠️O GIT ME IMPEDE DE SUBIR A API KEY DO SENDGRID NECESSARIA PARA QUE O ENVIO DE EMAIL SEJA REALIZADO, TENTAREI MANDAR EM UM JSON COM O PROJETO EM UM READ.ME MAS A NÃO AUTENTICAÇÃO POR EMAIL NÃO DEVE IMPACTAR NO FLUXO DO PROJETO, APENAS A NÃO AUTENTICAÇÃO POR LOGIN IMPACTA
 
-# Porta em que o servidor rodará
+Porta em que o servidor rodará
 PORT=3000
 
 3. Instale as dependências
@@ -64,7 +64,7 @@ npm run dev
 
 O servidor estará rodando em http://localhost:3000.
 
-🛠️ Endpoints Disponíveis
+# 🛠️ Endpoints Disponíveis
 
 🛠️ user
 
@@ -174,7 +174,7 @@ Resposta:
       "message": "Registro deletado com sucesso."
     }
 ```
-🐳 Rodando o projeto com Docker
+# 🐳 Rodando o projeto com Docker
 
 Se preferir, você pode rodar toda a aplicação (servidor + banco de dados) usando Docker Compose:
 
@@ -184,19 +184,19 @@ Se preferir, você pode rodar toda a aplicação (servidor + banco de dados) usa
 
     Acesse a aplicação em http://localhost:3000.
 
-🧪 Rodando os Testes
+# 🧪 Rodando os Testes
 
 Execute os testes com o comando:
 
 npx jest ou npx jest --coverage
 
-🧪 Documentação com swagger
+# 🧪 Documentação com swagger
 
 Execute a documentação com o servidor ativo pelo link:
 ```
 http://localhost:3000/api-docs
 ```
-📝 Incrementação
+# 📝 Incrementação
 
 A Aplicação pode ser incrementada de diversar formas, dentre elas posso citar:
 
@@ -206,6 +206,6 @@ A Aplicação pode ser incrementada de diversar formas, dentre elas posso citar:
 
 - Segurança e Conformidade: Varias formas de segurança extra podem ser implemetadas como proteção contra bots e uso indevido, como CAPTCHAs e limites de requisições por IP. Além de formas de criptografia poderiam ser implementadas para garantir que os dados sensíveis estejam criptografados em trânsito (HTTPS).
 
-📝 Contribuição
+# 📝 Contribuição
 
 Sinta-se à vontade para abrir issues e pull requests. Toda contribuição é bem-vinda!
