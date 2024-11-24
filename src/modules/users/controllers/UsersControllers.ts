@@ -6,11 +6,13 @@ const UsersController = {
     try {
       const { name, email, password } = request.body;
 
-      await CreateUserService.createUser(name, email, password);
+      const returned = await CreateUserService.createUser(
+        name,
+        email,
+        password
+      );
 
-      return response
-        .status(200)
-        .json({ message: "Conta criada com sucesso!" });
+      return response.status(200).json({ message: returned });
     } catch (error: any) {
       return response.status(500).send({ error: error.message });
     }
