@@ -7,7 +7,7 @@ export default class CreateUserService {
     name: string,
     email: string,
     password: string
-  ): Promise<void> {
+  ): Promise<String> {
     const userRepository = AppDataSource.getRepository(User);
 
     // Valida os campos
@@ -30,5 +30,7 @@ export default class CreateUserService {
     sendAuthEmail(email, token);
     // Salva no banco de dados
     await userRepository.save(newUser);
+
+    return "Conta criada com sucesso!";
   }
 }
