@@ -24,7 +24,7 @@ cd teste-backend
 
 Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
-# Configurações do banco de dados e JWT
+# Configurações do banco de dados e JWT no .env
 ```
 DB_USER=admin
 DB_PASSWORD=admin1
