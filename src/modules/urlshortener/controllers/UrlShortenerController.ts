@@ -14,7 +14,7 @@ const UrlShortenerController = {
 
       const tinyUrl = await UrlShortenerService.createShortUrl(url, userId);
 
-      return response.status(200).json(tinyUrl);
+      return response.status(200).json({ "shortUrl:": tinyUrl });
     } catch (error: any) {
       return response.status(400).send({ error: error.message });
     }
@@ -54,9 +54,9 @@ const UrlShortenerController = {
 
       const userId = await JWTDecrypt(request, response);
 
-      await UpdateUrlService.updateUrl(userId, url, id);
+      const returned = await UpdateUrlService.updateUrl(userId, url, id);
 
-      return response.status(200).json("Url atualizada com sucesso!");
+      return response.status(200).json({ message: returned });
     } catch (error: any) {
       return response.status(500).send({ error: error.message });
     }
@@ -68,7 +68,7 @@ const UrlShortenerController = {
 
       const returned = await DeleteUrlService.deleteUrl(id, userId);
 
-      return response.status(200).json(returned);
+      return response.status(200).json({ message: returned });
     } catch (error: any) {
       return response.status(500).send({ error: error.message });
     }
