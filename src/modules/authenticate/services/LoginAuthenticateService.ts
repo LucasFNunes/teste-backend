@@ -6,7 +6,7 @@ import AppDataSource from "../../../ormconfig";
 export default class AuthenticateService {
   static async execute(email: string, password: string): Promise<any> {
     const userRepository = AppDataSource.getRepository(User);
-    const user = await userRepository.findOneBy({ email });
+    const user = await userRepository.findOneBy({ email, isTrashed: false });
 
     if (!user) {
       throw Error("Usuário ou senha não encontrado.");

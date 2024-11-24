@@ -1,56 +1,31 @@
 import nodemailer from "nodemailer";
-import path from "path";
 
-// Definindo o transporte com Mailgun
-const transport = nodemailer.createTransport({
-  host: "smtp.mailgun.org", // Host do Mailgun
-  port: 587, // Porta padrão para SMTP seguro
-  auth: {
-    user: "postmaster@auth.domain.com", // API Key do Mailgun ou SMTP username
-    pass: "&r2$*Sx%A2*#*9", // SMTP password
-  },
-});
+async function sendAuthEmail(email: string, token: string): Promise<void> {
+  // Cria o transporte SMTP usando as credenciais fornecidas
+  const transporter = nodemailer.createTransport({
+    service: "SendGrid",
+    auth: {
+      user: "apikey", // Usar 'apikey' como nome de usuário
+      pass: `${process.env.SENDGRID}`, // Substitua por sua chave de API do SendGrid
+    },
+  });
 
-async () => {
+  // Define as opções do e-mail
+
+  const mailOptions = {
+    from: "testeexemplo582@gmail.com", // Email verificado no SendGrid
+    to: `${email}`, // Email do destinatário
+    subject: "Confirme seu email!",
+    text: `Este é o seu código de confirmação, faça uma requisição na rota auth como,\n"code": "${token}",\n para autenticar sua conta.`,
+  };
+
   try {
-    // Importando dinamicamente o nodemailer-express-handlebars
-    const hbs = (await import("nodemailer-express-handlebars")).default;
-
-    // Usando o HBS para configurar o transport
-    transport.use(
-      "compile",
-      hbs({
-        viewEngine: {
-          defaultLayout: undefined,
-          partialsDir: path.resolve("./src/modules"),
-        },
-        viewPath: path.resolve("./src/modules"),
-        extName: ".html",
-      })
-    );
+    // Envia o e-mail
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email enviado: ", info.response);
   } catch (error) {
-    console.error("Erro ao importar nodemailer-express-handlebars:", error);
+    console.error("Erro ao enviar o e-mail: ", error);
   }
-};
+}
 
-export const sendAuthEmail = async (
-  to: string,
-  token: string
-): Promise<void> => {
-  try {
-    const mailOptions = {
-      from: "postmaster@auth.domain.com", // Insira um domínio configurado no Mailgun
-      to,
-      subject: "Ative sua conta",
-      template: "authEmail",
-      context: {
-        token,
-      },
-    };
-
-    await transport.sendMail(mailOptions);
-    console.log("E-mail de autenticação enviado com sucesso!");
-  } catch (error) {
-    console.error("Erro ao enviar e-mail de autenticação", error);
-  }
-};
+export default sendAuthEmail;
